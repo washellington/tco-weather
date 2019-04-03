@@ -1,0 +1,16 @@
+<form [formGroup]='settingsForm'  (ngSubmit)="save()">
+    <div class='form-group'>
+        <label>
+            Temperature Metric Unit
+        </label>
+        <div>
+          F
+          <label for="metrics" class='switch' (click)="toggleMetrics()">
+            <input type="checkbox" formControlName="metrics">
+            <span class="slider round"></span> 
+          </label>
+          C
+      </div>
+        
+    </div>
+</form>

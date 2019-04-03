@@ -1,0 +1,59 @@
+<div class='empty' id='empty-city-container' *ngIf="!this.userService.getUserCities(this.authService.getLoggedInUser().email).length">
+  <div id='empty-city-icon' [inlineSVG]='"empty.svg" | assetImage'></div>
+  <span>No cities</span>
+</div>
+<ul id='cities' *ngIf="this.userService.getUserCities(this.authService.getLoggedInUser().email).length">
+  <li *ngFor="let city of cities">
+    <a routerLink='/cities/{{city.id}}'>
+      <div class="feed-card">
+        <div class='top'>
+            <div>
+
+              <img class='overcast' src='https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/{{city.currentForecast.overcast_icon}}.png'/>
+              <span>{{city.currentForecast.overcast}}</span>
+            </div>
+            <span class="current-temp">
+              {{city.currentForecast.currentTemperature | number:'1.0-0' | temperature: this.unit}}
+            </span>
+        </div>
+        <div  class='bottom'>
+          <div class="location">
+            <span class="city">{{city.name}},</span>
+            <span class="country">{{city.country}}</span>
+          </div>
+          <div class="forecast">
+              <span class="high">
+                {{city.currentForecast.high | number:'1.0-0' | temperature: this.unit}}
+              </span>
+              <span class="low">
+                  {{city.currentForecast.low | number:'1.0-0'  | temperature: this.unit}}
+              </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+<a routerLink="/search" class='btn action-btn' id="add-city-bttn">
+  <div [inlineSVG]='"search_icon.svg" | assetImage'></div>
+</a>
+
+<div id="add-city-modal"  class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Empty Feed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Would you like to add a city?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addCity()">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

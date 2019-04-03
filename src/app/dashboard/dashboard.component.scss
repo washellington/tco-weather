@@ -1,0 +1,140 @@
+@import '../../variables.scss';
+
+
+$mockup-height: 900px;
+$mockup-width: 1440px;
+
+
+
+
+$navbar-height: 70px / $mockup-height * 100vh;
+
+.dashboard-icons{
+  height: auto;
+  width: 4vh;
+  max-height: 4vh;
+}
+
+#app-title{
+  max-width: 50vw;
+  overflow: hidden;
+  white-space: pre;
+  text-overflow: ellipsis;
+}
+
+span {
+  font-size: 3vh;
+}
+
+
+#drawer-modal-overlay{
+  width: 100vw;
+  background-color: rgba(0,0,0,.16);
+  z-index: 9999;
+  opacity: 0;
+  transition: all .3s ease;
+}
+
+
+#search-icon-container{
+  max-width: 4vh;
+  height: auto;
+  width: 4vh;
+  padding: 0;
+  display: block !important;
+}
+
+.navbar-toggler{
+  border: 0;
+}
+
+#logged-in-user{
+  display: block;
+    background-color: $dark-text-bg;
+    padding: 4vh;
+    color: $dark-text-color;
+    font-weight: bold;
+    text-align: center;
+}
+
+#loggedin-icons{
+    height: auto;
+    width: 10vw;
+  
+}
+
+button{
+  background-color: transparent;
+  border: 0;
+  color: $contrast-accent-color;
+  font-weight: bold;
+}
+
+#logged-in-container{
+  display: flex;
+  align-items: center;
+  background-color: $dark-text-bg;
+  justify-content: space-evenly;
+}
+
+#main-nav{    
+  box-shadow: 6px 0px 20px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 0px;
+  left: -60vw;
+}
+
+#drawer-modal-overlay.open,  #main-nav.open {
+  left: 0vw;
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar{
+  background-color: $primary-color;
+  position: sticky;
+  height: $navbar-height;
+}
+
+.drawer-nav{
+  background-color: $primary-color;
+  position: fixed;
+  top: $navbar-height;
+  height: 100%;
+  z-index: 10000;
+  width: 60vw;
+  transition: all .3s ease;
+  visibility: hidden;
+  li{
+    margin-top: 22%;
+  }
+  a{
+    font-size: 2.5vh;
+    color: $dark-text-color;
+  }
+  ul{
+    list-style: none;
+  }
+}
+
+@media(min-width: 600px){
+
+  .drawer-nav{
+    width: 30vw;
+  }
+
+  #loggedin-icons{
+    width: 5vw; 
+  }
+
+}
+
+@media(orientation: landscape){
+  $navbar-height-landscape: 12vh;
+  .drawer-nav{
+    top: $navbar-height-landscape;
+  }
+  .navbar{
+    height: $navbar-height-landscape;
+
+  }
+}

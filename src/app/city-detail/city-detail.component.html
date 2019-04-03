@@ -1,0 +1,42 @@
+
+<div id='main-detail' class='{{city != undefined? "" : "hidden"}}'>
+  <div id="current-container">
+  <div id='over-cast-container'>
+    <div>
+      <img class='overcast' src='https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/{{city.currentForecast.overcast_icon}}.png'/>
+      <span>
+        {{city.currentForecast.overcast}}
+      </span>
+    </div>
+    <h1>{{city.name}}</h1>
+  </div>
+  <div class="city-info">    
+    <div id='high-low'>
+      <span class='high'>{{city.currentForecast.high | number:'1.0-0'  | temperature: this.unit}}</span>
+      <span class='low'>{{city.currentForecast.low  | number:'1.0-0'  | temperature: this.unit}}</span>
+    </div>
+  </div>
+  </div>
+  <div id='five-day-forecast'>
+    <div class="chart-js-host">
+      <canvas id="forecastChart" > </canvas>
+    </div>
+    <ul>
+      <li *ngFor="let forecast of city.fiveDayForecast">
+        <span>{{forecast.date | date}}</span>
+          <span class='overcast'>{{forecast.overcast}}</span>
+          <div class='highs-lows'>
+            <span class='high'>{{forecast.high | number:'1.0-0'  | temperature: this.unit}}</span>
+            <span class='low'>{{forecast.low | number:'1.0-0'  | temperature: this.unit}}</span>
+          </div>      
+      </li>
+    </ul>
+  </div>
+  
+  <button type="button" *ngIf="!isCityAdded()" class="action-btn" (click)="addCity()">
+    <div [inlineSVG]='"plus_icon.svg" | assetImage'></div>
+  </button>
+  <button type="button" *ngIf="isCityAdded()" class="action-btn" (click)="removeCity()">
+      <div [inlineSVG]='"delete_icon.svg" | assetImage' id="delete-icon-container"></div>
+  </button>
+</div>

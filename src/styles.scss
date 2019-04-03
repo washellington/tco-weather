@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables.scss';
+
+body{
+  background-color: $primary-color;
+  color: $dark-text-color;
+  text-overflow: ellipsis;
+}
+
+.hidden{
+  display: none;
+}
+
+.dashboard-icons:not(#app-logo-container) svg{
+  fill: $contrast-accent-color;
+}
+
+
+.action-btn{
+  padding: 0;
+  height: 18vw;
+  width: 18vw;
+  border-radius: 50%;
+  font-size: 9vw;
+  text-align: center;
+  background-color: $contrast-accent-color;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 3vh;
+  color: black;
+  border: 0;
+  box-shadow: 0 7px 10px 0px rgba(0, 0, 0, .16);
+  margin-right: 6vw;
+  outline: 0;
+
+
+  &:active, &:focus, &:hover, &.pressed {
+    background-color: $contrast-accent-color-darker;
+  }
+
+  div{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg{
+        height: auto;
+        width: 50%;
+        fill: #174255;
+      }
+    }
+  }
+
+  
+@media(min-width: 600px){
+   .action-btn{
+    height: 8vw;
+    width: 8vw;
+    font-size: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+}

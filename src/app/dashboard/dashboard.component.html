@@ -1,0 +1,48 @@
+<nav [class.open]="open == true" class="drawer-nav" id="drawer-modal-overlay" (click)="closeOverlay()">
+  
+</nav>
+<nav id='main-nav' [class.open]="open == true" class="drawer-nav" role="navigation" *ngIf="authService.isLoggedIn()">
+  <div id="logged-in-container">
+    <div id='loggedin-icons' [inlineSVG]='"icon-dot.svg"  | assetImage'></div>
+    <span id='logged-in-user'>
+      {{authService.getLoggedInUser().email}}
+    </span>
+  </div>
+  <ul class="drawer-menu">
+    <li>
+      <a  (click)="navigatieClick('/cities')" class="dropdown-item">
+        Feed
+      </a>
+    </li>
+    <li>
+      <a  (click)="navigatieClick('/search')" class="dropdown-item">
+        Search
+      </a>
+    </li>
+    <li>
+      <a  (click)="navigatieClick('/settings')" class="dropdown-item">
+        Settings
+      </a>
+    </li>
+    <li>
+      <a href="#" class="dropdown-item" (click)="logout()">
+        Sign out
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light justify-content-between" *ngIf="authService.isLoggedIn()">
+  <button type='button' id=''>
+    <div (click)="toggleNavBar()" [inlineSVG]='"hamburger.svg"  | assetImage' class='dashboard-icons'></div>
+  </button>
+  <button type='button' id='app-title'>
+      <span>{{appTitle}}</span>
+  </button>
+  <button type='button' id='search-icon-container' (click)="searchClick()">
+      <div id="search-icon-container" class='navbar-toggler dashboard-icons' [inlineSVG]='"search_icon.svg"  | assetImage'></div>
+  </button>
+</nav>
+<nav>
+
+</nav>
+
