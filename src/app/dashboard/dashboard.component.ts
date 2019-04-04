@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   logout(){
     this.authService.logoutUser()
-    this.navigatieClick("/login")
+    this.navigateClick("/login")
   }
   
   toggleNavBar(){
@@ -33,15 +33,14 @@ export class DashboardComponent implements OnInit {
   }
 
   searchClick(){
-    this.open = false;
-    this.router.navigateByUrl("/search")
+    this.navigateClick("/search")
   }
 
   closeOverlay(){
     this.open = false
   }
 
-  navigatieClick(x){
+  navigateClick(x){
     this.closeOverlay()
     this.router.navigateByUrl(x)
 

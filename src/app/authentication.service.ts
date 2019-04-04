@@ -12,6 +12,8 @@ import { PersistenceService, StorageType } from 'angular-persistence';
 export class AuthenticationService {
 
   static USER_SESSION = 'loggedUser';
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
 
   constructor(private persistenceService: PersistenceService) { }
 

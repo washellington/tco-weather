@@ -5,12 +5,13 @@ import { CitiesComponent } from './cities/cities.component';
 import { SearchComponent } from './search/search.component';
 import { SettingsComponent } from './settings/settings.component';
 import {CityDetailComponent} from './city-detail/city-detail.component';
+import {AuthGuard} from './auth/auth.guard'
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'cities', component: CitiesComponent },
-  { path: 'cities/:id', component: CityDetailComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'cities', component: CitiesComponent,  canActivate: [AuthGuard] },
+  { path: 'cities/:id', component: CityDetailComponent,  canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent,  canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent,  canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 

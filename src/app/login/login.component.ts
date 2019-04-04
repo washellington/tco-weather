@@ -46,7 +46,10 @@ export class LoginComponent implements OnInit {
   successLogin(user:User){
     this.messageService.show('Successful login')
     this.authService.loginUser(user)
-    this.router.navigateByUrl("/cities")
+    if(this.authService.isLoggedIn()){
+      this.router.navigateByUrl(this.authService.redirectUrl || "/cities")
+      this.authService.redirectUrl = ""
+    }
   }
 
   invalidLogin(){
