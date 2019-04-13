@@ -1,6 +1,8 @@
 # Description
 
 Angular application that utilizes OpenWeatherMap API. To login enter any valid email for the username and the password is test1234. 
+Demo: http://weather.theconsciousobserver.me
+
 # TcoWeather
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
